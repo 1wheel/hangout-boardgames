@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Module>
+  <ModulePrefs title="Your App Name">
+    <Require feature="rpc"/>
+    <Require feature="views"/>
+  </ModulePrefs>
+  <Content type="html">
+    <![CDATA[
+	<script src="//hangoutsapi.talkgadget.google.com/hangouts/_/api/hangout.js?v=1.1"></script>
+    
+	<link rel="stylesheet" href="https://raw.github.com/1wheel/hangout-checkers/master/reversi/footer.css" />	
+	<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Reversi</title>
+	<script type="text/javascript" src="https://raw.github.com/1wheel/hangout-checkers/master/reversi/game.js"></script>
+
+</head>
+
+<body id="body" onResize = "positionVideoCanvas()">    
+    <canvas id="board" width="400" height="400"> </canvas>
+    <script type ="text/javascript">  </script>
+    
+    <div id="white"> 
+            <li class='teamName' >White <nobr  id='whiteScore'></nobr> </li>
+            <li id='whitePlayers'>whitePlayers</li> 
+            <li id='joinWhite'></li>
+       
+   </div>
+            
+    <div id="none"> 
+            <li class='teamName' id='updateField'>Unassigned</li>
+            <li id='nonePlayers'>nonePlayers</li>            
+            <li id='joinNone'></li>
+
+    </div>  
+            
+    <div id="black"> 
+            <li class='teamName' >Black <nobr  id='blackScore'></nobr> </li>
+            <li id='blackPlayers'>blackPlayers</li>            
+            <li id='joinBlack'></li>
+        
+    </div>
+
+	<div id='info'>
+	</div>
+
+</body>​
+</html>
+
+
+    ]]>
+  </Content>
+</Module>

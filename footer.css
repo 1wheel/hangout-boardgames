@@ -1,0 +1,29 @@
+#white{
+ position:absolute;
+ top:430;
+ left:10px;
+ width:200px;
+}
+
+#none{
+ position:absolute;
+ top:430px;
+ left:180px;
+ width:200px;
+}
+
+#black{
+ position:absolute;
+ top:430px;
+ left:300px;
+ width:200px;
+}
+
+.teamName {
+	font-size: 120%;
+
+}
+
+ li { 
+ 	list-style: none; 
+ }
