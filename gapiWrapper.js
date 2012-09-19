@@ -20,7 +20,9 @@ var Game = new
 
 //called by game object when it has data to send out
 function sendStateToServer(boardString){
-	gapi.hangout.data.submitDelta({boardString: boardString})
+	if (boardString) {
+		gapi.hangout.data.submitDelta({boardString: boardString});
+	}
 }
 
 //passes updated state to gameboard
