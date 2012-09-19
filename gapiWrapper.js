@@ -16,10 +16,11 @@ var participantTeam = [];
 var VC;
 
 //contains game state and methods
-var Game = new 
+var Game = new reversi;
 
 //called by game object when it has data to send out
 function sendStateToServer(boardString){
+	save boardString;
 	if (boardString) {
 		gapi.hangout.data.submitDelta({boardString: boardString});
 	}
