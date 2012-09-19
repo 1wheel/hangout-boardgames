@@ -8,13 +8,14 @@
     <![CDATA[
 	<script src="//hangoutsapi.talkgadget.google.com/hangouts/_/api/hangout.js?v=1.1"></script>
     
-	<link rel="stylesheet" href="https://raw.github.com/1wheel/hangout-checkers/master/reversi/footer.css" />	
+	<link rel="stylesheet" href="https://raw.github.com/1wheel/hangout-boardgames/master/footer.css" />	
 	<!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <title>Reversi</title>
-	<script type="text/javascript" src="https://raw.github.com/1wheel/hangout-checkers/master/reversi/game.js"></script>
+	<script type="text/javascript" src="https://raw.github.com/1wheel/hangout-boardgames/master/gapiWrapper.js"></script>
+    <script type="text/javascript" src="https://raw.github.com/1wheel/hangout-boardgames/master/reversi.js"></script>
 
 </head>
 
