@@ -16,7 +16,7 @@ var participantTeam = [];
 var VC;
 
 //contains game state and methods
-var Game = new reversi;
+var Game;
 
 //called by game object when it has data to send out
 function sendStateToServer(boardString){
@@ -62,6 +62,7 @@ gapi.hangout.onApiReady.add(function(eventObj){
 		try {
 			var state = gapi.hangout.data.getState();
 			
+			Game = new reversi();
 			//checks to see if game has already been created
 			if (typeof state.cArray != 'undefined') {
 				//game already running, join it
