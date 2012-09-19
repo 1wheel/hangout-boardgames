@@ -217,16 +217,21 @@ function idIndex(id) {
 //positions video canvas to take up largest possible area without covering board
 function positionVideoCanvas() {
 	maxHeight = window.innerHeight;
-	maxWidth = window.innerWidth - 550;
+	maxWidth = window.innerWidth - 430;
 
-	if (maxWidth/maxHeight > VC.getAspectRatio()){
-		VC.setHeight(maxHeight);
+	if (VC){
+		if (maxWidth/maxHeight > VC.getAspectRatio()){
+			VC.setHeight(maxHeight);
+		}
+		else {
+			VC.setWidth(maxWidth);
+		}
+		VC.setPosition(580,0);
+		VC.setVisible(true);
 	}
 	else {
-		VC.setWidth(maxWidth);
+		VC = gapi.hangout.layout.getVideoCanvas();
 	}
-	VC.setPosition(580,0);
-	VC.setVisible(true);
 }
 
 //creates info on game start
