@@ -39,7 +39,6 @@ function startNewGameClick(){
 
 //called by game object when it has data to send out
 function sendStateToServer(boardString){
-	save = boardString;
 	if (boardString) {
 		gapi.hangout.data.submitDelta({
 			boardString: 	boardString,
@@ -88,6 +87,8 @@ gapi.hangout.onApiReady.add(function(eventObj){
 			if (state.gameName) {
 				gameName = state.gameName;
 				eval("Game = new " + gameName +"();");
+				setupCanvasObjects();
+				sendStateToGame(state.boardString);
 			}
 			else {
 				gapi.hangout.data.submitDelta({
