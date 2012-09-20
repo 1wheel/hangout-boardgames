@@ -85,10 +85,10 @@ gapi.hangout.onApiReady.add(function(eventObj){
 			var state = gapi.hangout.data.getState();
 
 			statelog = state;
+			log("GAPI loaded")
 
 			//game running, join it
 			if (state.gameName) {
-				log("gamestate exists")
 				setupCanvasObjects();
 
 				gameName = state.gameName;
