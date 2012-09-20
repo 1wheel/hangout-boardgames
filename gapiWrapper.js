@@ -81,18 +81,19 @@ function setupCanvasObjects() {
 //game starts when hangout API is ready
 gapi.hangout.onApiReady.add(function(eventObj){
 	if (eventObj.isApiReady) { 
+		alert("api ready");
 		try {
 			var state = gapi.hangout.data.getState();
 
 			statelog = state;
-			log("GAPI loaded")
+			console.log("GAPI loaded");
 
 			//game running, join it
 			if (state.gameName) {
 				setupCanvasObjects();
 
 				gameName = state.gameName;
-				log("joining running game of " + gameName);
+				console.log("joining running game of " + gameName);
 				eval("Game = new " + gameName +"();");
 				sendStateToGame(state.boardString);
 			}
