@@ -33,6 +33,8 @@ function startNewGameClick(){
 	var selectedGame = gameList[document.getElementById("gameMenu").selectedIndex];
 	eval("Game = new " + selectedGame +"();");
 	setupCanvasObjects();
+	console.log(selectedGame);
+	save = gameName;
 	Game.startGame();
 	gameName = selectedGame;
 }
@@ -158,6 +160,7 @@ function serverUpdate(){
 
 		if (gameName != state.gameName) {
 			eval("Game = new " + state.gameName +"();");
+			gameName = state.gameName;
 		}
 	}
 	catch(e)
