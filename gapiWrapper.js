@@ -28,15 +28,13 @@ var VC;
 var Game;
 var gameName;
 
-//
-function startNewGameClick(){
-	var selectedGame = gameList[document.getElementById("gameMenu").selectedIndex];
-	eval("Game = new " + selectedGame +"();");
+function startNewGameClick(){	
 	setupCanvasObjects();
-	console.log(selectedGame);
-	save = gameName;
-	Game.startGame();
+
+	var selectedGame = gameList[document.getElementById("gameMenu").selectedIndex];
+	eval("Game = new " + selectedGame +"();");	
 	gameName = selectedGame;
+	Game.startGame();
 }
 
 //called by game object when it has data to send out
