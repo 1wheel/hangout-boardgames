@@ -85,9 +85,11 @@ gapi.hangout.onApiReady.add(function(eventObj){
 
 			//game running, join it
 			if (state.gameName) {
-				gameName = state.gameName;
-				eval("Game = new " + gameName +"();");
 				setupCanvasObjects();
+
+				gameName = state.gameName;
+				log("joining running game of " + gameName);
+				eval("Game = new " + gameName +"();");
 				sendStateToGame(state.boardString);
 			}
 			else {
