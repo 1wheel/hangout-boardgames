@@ -34,14 +34,17 @@ function startNewGameClick(){
 	eval("Game = new " + selectedGame +"();");
 	setupCanvasObjects();
 	Game.startGame();
-	serverUpdate();
+	gameName = selectedGame;
 }
 
 //called by game object when it has data to send out
 function sendStateToServer(boardString){
 	save = boardString;
 	if (boardString) {
-		gapi.hangout.data.submitDelta({boardString: boardString});
+		gapi.hangout.data.submitDelta({
+			boardString: 	boardString,
+			gameName: 		gameName 
+		});
 	}
 }
 
