@@ -81,11 +81,8 @@ function setupCanvasObjects() {
 //game starts when hangout API is ready
 gapi.hangout.onApiReady.add(function(eventObj){
 	if (eventObj.isApiReady) { 
-		alert("api ready");
 		try {
 			var state = gapi.hangout.data.getState();
-
-			statelog = state;
 			console.log("GAPI loaded");
 
 			//game running, join it
@@ -139,6 +136,7 @@ gapi.hangout.onApiReady.add(function(eventObj){
 				participantID:	JSON.stringify(participantID), 
 				participantTeam:JSON.stringify(participantTeam),
 			});
+			participantUpdate();
 
 			//adds videos canvas to the display
 			VC = gapi.hangout.layout.getVideoCanvas();
