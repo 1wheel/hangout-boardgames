@@ -28,7 +28,8 @@ var VC;
 var Game;
 var gameName;
 
-function startNewGameClick(){	
+function startNewGameClick(){
+	console.log("starting new game");	
 	setupCanvasObjects();
 
 	var selectedGame = gameList[document.getElementById("gameMenu").selectedIndex];
@@ -85,6 +86,7 @@ gapi.hangout.onApiReady.add(function(eventObj){
 
 			//game running, join it
 			if (state.gameName) {
+				log("gamestate exists")
 				setupCanvasObjects();
 
 				gameName = state.gameName;
@@ -157,11 +159,12 @@ function serverUpdate(){
 		infoDisplay = state.infoDisplay;
 		document.getElementById("info").innerHTML = infoDisplay;
 
-		sendStateToGame(state.boardString);
-
 		if (gameName != state.gameName) {
 			eval("Game = new " + state.gameName +"();");
 			gameName = state.gameName;
+		}
+		else if (context) {
+			sendStateToGame(state.boardString);
 		}
 	}
 	catch(e)
