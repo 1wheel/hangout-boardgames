@@ -16,13 +16,17 @@
     <title>Reversi</title>
 	<script type="text/javascript" src="https://raw.github.com/1wheel/hangout-boardgames/master/gapiWrapper.js"></script>
     <script type="text/javascript" src="https://raw.github.com/1wheel/hangout-boardgames/master/reversi.js"></script>
+    <script type="text/javascript" src="https://raw.github.com/1wheel/hangout-boardgames/master/dots.js"></script>
 
 </head>
+
+ <div id='info'></div>
 
 <body id="body" onResize = "positionVideoCanvas()">    
     <canvas id="board" width="400" height="400"> </canvas>
     <script type ="text/javascript">  </script>
-    
+
+        
     <div id="white"> 
             <li class='teamName' >White <nobr  id='whiteScore'></nobr> </li>
             <li id='whitePlayers'>whitePlayers</li> 
@@ -43,9 +47,6 @@
             <li id='joinBlack'></li>
         
     </div>
-
-	<div id='info'>
-	</div>
 
 </body>​
 </html>

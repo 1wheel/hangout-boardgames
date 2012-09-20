@@ -5,8 +5,17 @@ var board;			//canva
 var context;		//canvas context
 var container;		//holds color score, player names and join button
 
-//displays below game canvas
-var infoDisplay = "";
+//displays above game canvas
+var gameList = ["Dots", "Reversi"];
+var dropDownMenu = "";
+for (var i = 0; i < gameList.length; i++){
+	dropDownMenu += '<option value="' + gameList[i] + '">' + gameList[i] +'</option>';
+}
+dropDownMenu = '<select  id="gameMenu">' + dropDownMenu + '</select>';
+
+var startGameButton = "<input type='button' value='Play' onclick='startNewGameClick();' />";
+var startGameHTML = startGameButton + " a game of " + dropDownMenu;
+var infoDisplay = startGameHTML;
 
 //stores participantID and corrisponding team color
 var participantID = [];
@@ -17,6 +26,16 @@ var VC;
 
 //contains game state and methods
 var Game;
+var gameName;
+
+//
+function startNewGameClick(){
+	var selectedGame = gameList[document.getElementById("gameMenu").selectedIndex];
+	eval("Game = new " + selectedGame +"();");
+	setupCanvasObjects();
+	Game.startGame();
+	serverUpdate();
+}
 
 //called by game object when it has data to send out
 function sendStateToServer(boardString){
@@ -41,7 +60,7 @@ function isPlayerTurn(color) {
 
 //updates info div with winner info and button to start new game
 function gameEnded(winnerText){
-	infoDisplay = winnerText + "<input type='button' value='Start New Game' onclick='startGame();' />";
+	infoDisplay = winnerText + " . " + startGameHTML;
 	gapi.hangout.data.submitDelta({
 		infoDisplay:	infoDisplay
 	});	
@@ -61,26 +80,24 @@ gapi.hangout.onApiReady.add(function(eventObj){
 	if (eventObj.isApiReady) { 
 		try {
 			var state = gapi.hangout.data.getState();
-			
-			Game = new reversi();
-			//checks to see if game has already been created
-			if (typeof state.cArray != 'undefined') {
-				//game already running, join it
-				setupCanvasObjects();
-				serverUpdate();
+
+			//game running, join it
+			if (state.gameName) {
+				gameName = state.gameName;
+				eval("Game = new " + gameName +"();");
 			}
 			else {
-				//no game running, start a new one
-				Game.startGame();
-				gameStartInfo();
+				gapi.hangout.data.submitDelta({
+					infoDisplay:	startGameHTML
+				});	
 			}
-			
+				
 			//checks to see if there are other players present
 			if (state.participantID) {
 				participantID = JSON.parse(state.participantID);
 				participantTeam = JSON.parse(state.participantTeam);
 			}
-			
+		
 			//adds the local player to team and saves id
 			participantID[participantID.length] = gapi.hangout.getParticipantId();
 			participantTeam[participantTeam.length] = 0; 
@@ -135,6 +152,10 @@ function serverUpdate(){
 		document.getElementById("info").innerHTML = infoDisplay;
 
 		sendStateToGame(state.boardString);
+
+		if (gameName != state.gameName) {
+			eval("Game = new " + state.gameName +"();");
+		}
 	}
 	catch(e)
 	{

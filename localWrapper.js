@@ -5,13 +5,33 @@ var board;			//canva
 var context;		//canvas context
 var container;		//holds color score, player names and join button
 
-//displays below game canvas
-var infoDisplay = "";
+var gameList = ["Dots", "Reversi"];
+var dropDownMenu = "";
+for (var i = 0; i < gameList.length; i++){
+	dropDownMenu += '<option value="' + gameList[i] + '">' + gameList[i] +'</option>';
+}
+dropDownMenu = '<select  id="gameMenu">' + dropDownMenu + '</select>';
 
+var startGameButton = "<input type='button' value='Play' onclick='startNewGameClick();' />";
+var startGameHTML = startGameButton + " a game of " + dropDownMenu;
+
+//displays below game canvas
+var infoDisplay = startGameHTML;
+updateInfoDisplay();
 
 //contains game state and methods
-var Game = new reversi();
+var Game;
 
+function updateInfoDisplay() {
+	document.getElementById("info").innerHTML = infoDisplay;
+}
+
+function startNewGameClick(){
+	var selectedGame = gameList[document.getElementById("gameMenu").selectedIndex];
+	eval("Game = new " + selectedGame +"();");
+	setupCanvasObjects();
+	Game.startGame();
+}
 
 //called by game object when it has data to send out
 function sendStateToServer(boardString){
@@ -34,7 +54,7 @@ function isPlayerTurn(color) {
 
 //updates info div with winner info and button to start new game
 function gameEnded(winnerText){
-	infoDisplay = winnerText + "<input type='button' value='Start New Game' onclick='Game.startGame();' />";
+	infoDisplay = winnerText + 
 	document.getElementById("info").innerHTML = infoDisplay; 
 }
 
@@ -46,5 +66,3 @@ function setupCanvasObjects() {
 	//listens for clicks on the board	
 	board.addEventListener("mousedown",sendClickToGame,false);
 }
-
-Game.startGame();

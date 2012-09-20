@@ -1,4 +1,4 @@
-function reversi(){
+function Reversi(){
 	this.bn = 8;						//number of boxs
 	this.bs = Math.min(width,height) /8; //boxsize
 
@@ -17,7 +17,7 @@ function reversi(){
 	this.callSendState = function(){
 			var boardState = {
 				cArray:			JSON.stringify(this.cArray), 
-				blackTurn:			JSON.stringify(this.blackTurn),
+				blackTurn:		JSON.stringify(this.blackTurn),
 			}
 		sendStateToServer(JSON.stringify(boardState));
 	}
@@ -31,7 +31,9 @@ function reversi(){
 
 
 	//initilizes empty arrays representing game state
-	this.startGame = function() {
+	this.startGame = function() {		
+		setupCanvasObjects();	
+
 		//fills this.cArray with 0s
 		for (var x = 0; x < this.bn; x++) {
 			this.cArray[x] = [];
@@ -51,7 +53,6 @@ function reversi(){
 		//sets starting player
 		this.blackTurn = true;
 		
-		setupCanvasObjects();	
 
 		this.callSendState();	
 	}
@@ -78,6 +79,7 @@ function reversi(){
 
 	//draws grid of lines 
 	this.drawGrid = function(){
+		context.beginPath();
 		//draw vertical lines
 		for (var x=0; x<=this.bn*this.bs; x+= this.bs) {
 			context.moveTo(x,0);
@@ -93,6 +95,7 @@ function reversi(){
 		//fills in lines in offwhite
 		context.strokeStyle = "rgb(190,190,190)";
 		context.stroke();
+		context.closePath();
 	}
 
 	//draw pieces placed by players
@@ -156,7 +159,6 @@ function reversi(){
 
 	//called when the page is clicked
 	this.click = function(e){
-		save = this;
 		var color = this.currentColor();
 		var pos = this.findPos(board);		
 		var cord = this.findCord(e.pageX - pos.x, e.pageY - pos.y);
