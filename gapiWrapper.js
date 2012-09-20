@@ -261,6 +261,7 @@ function idIndex(id) {
 function positionVideoCanvas() {
 	maxHeight = window.innerHeight;
 	maxWidth = window.innerWidth - 430;
+	console.log("position video canvas called");
 
 	if (VC){
 		if (maxWidth/maxHeight > VC.getAspectRatio()){

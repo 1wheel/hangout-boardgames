@@ -22,7 +22,7 @@
 
  <div id='info'></div>
 
-<body id="body" onresize  = "positionVideoCanvas();">    
+<body id="body" onresize="positionVideoCanvas()">    
     <canvas id="board" width="400" height="400"> </canvas>
     <script type ="text/javascript">  </script>
 
