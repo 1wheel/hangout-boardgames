@@ -45,8 +45,8 @@ function sendStateToServer(boardString){
 	if (boardString) {
 		gapi.hangout.data.submitDelta({
 			boardString: 	boardString,
-			gameName: 		gameName 
-			infoDisplay:
+			gameName: 		gameName, 
+			infoDisplay:    infoDisplay,
 		});
 	}
 }
