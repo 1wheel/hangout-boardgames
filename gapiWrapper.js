@@ -84,6 +84,8 @@ gapi.hangout.onApiReady.add(function(eventObj){
 		try {
 			var state = gapi.hangout.data.getState();
 
+			statelog = state;
+
 			//game running, join it
 			if (state.gameName) {
 				log("gamestate exists")
