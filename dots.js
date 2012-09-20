@@ -101,33 +101,20 @@ function Dots() {
 
 	//draws in lines clicked by player
 	this.drawLines = function(){
-		//lines are black
-		var primaryColor = 'black';
-		var secondColor = (this.blueTurn) ? "blue" : "red";
+		//lines are mostly with a little red or blue
+		context.fillStyle = (this.blueTurn) ? "rgb(4,9,83)" : "rgb(103,3,3)";
 
-		//draws vertical lines
+		//draws vertical and horizontal lines
 		for (var x = 0; x < this.bn + 1; x++) {
 			for (var y = 0; y < this.bn; y++) {
 				if (this.vArray[x][y]) { 
-					context.fillStyle = primaryColor;
 					context.fillRect(x*this.bs, y*this.bs, 4, this.bs+3);
-					context.fillStyle = secondColor;
-					context.fillRect(x*this.bs+1, y*this.bs, 1, this.bs+3);
+				}
+				if (this.hArray[x][y]) { 
+					context.fillRect(x*this.bs, y*this.bs, this.bs+3, 4);
 				}
 			}
 		}
-		
-		//draws horizontal lines
-		for (var x = 0; x < this.bn; x++) {
-			for (var y = 0; y < this.bn + 1; y++) {
-				if (this.hArray[x][y]) { 
-					context.fillStyle = primaryColor;				
-					context.fillRect(x*this.bs, y*this.bs, this.bs+3, 4);
-					context.fillStyle = secondColor;
-					context.fillRect(x*this.bs, y*this.bs+1, this.bs+3, 1);
-				}
-			}
-		}	
 	}
 
 	//draws boxes surrounded by lines

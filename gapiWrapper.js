@@ -32,9 +32,11 @@ function startNewGameClick(){
 	console.log("starting new game");	
 	setupCanvasObjects();
 
-	var selectedGame = gameList[document.getElementById("gameMenu").selectedIndex];
-	eval("Game = new " + selectedGame +"();");	
-	gameName = selectedGame;
+	gameName = gameList[document.getElementById("gameMenu").selectedIndex];
+	eval("Game = new " + gameName +"();");	
+	
+	gameStartInfo();
+
 	Game.startGame();
 }
 
@@ -92,7 +94,12 @@ gapi.hangout.onApiReady.add(function(eventObj){
 				gameName = state.gameName;
 				console.log("joining running game of " + gameName);
 				eval("Game = new " + gameName +"();");
+
+				//Simulate server update to trigger redraw		
 				sendStateToGame(state.boardString);
+				participantUpdate();		
+				document.getElementById("info").innerHTML = state.infoDisplay;
+
 			}
 			else {
 				gapi.hangout.data.submitDelta({
@@ -136,7 +143,6 @@ gapi.hangout.onApiReady.add(function(eventObj){
 				participantID:	JSON.stringify(participantID), 
 				participantTeam:JSON.stringify(participantTeam),
 			});
-			participantUpdate();
 
 			//adds videos canvas to the display
 			VC = gapi.hangout.layout.getVideoCanvas();
@@ -275,5 +281,5 @@ function gameStartInfo() {
 		var gameStarterID = gapi.hangout.getParticipantId();
 		var gameStarterObject = gapi.hangout.getParticipantById(gameStarterID);
 		var gameStarterName = gameStarterObject.person.displayName;
-		infoDisplay = gameStarterName + " has started a new game";	
+		infoDisplay = gameStarterName + " has started a new game of " + gameName;	
 }
