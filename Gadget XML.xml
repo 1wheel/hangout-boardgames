@@ -28,7 +28,7 @@
 
         
     <div id="white"> 
-            <li class='teamName' >White <nobr  id='whiteScore'></nobr> </li>
+            <li class='teamName' >White1 <nobr  id='whiteScore'></nobr> </li>
             <li id='whitePlayers'>whitePlayers</li> 
             <li id='joinWhite'></li>
        
