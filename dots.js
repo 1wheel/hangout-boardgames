@@ -110,8 +110,8 @@ function Dots() {
 				if (this.vArray[x][y]) { 
 					context.fillRect(x*this.bs, y*this.bs, 4, this.bs+3);
 				}
-				if (this.hArray[x][y]) { 
-					context.fillRect(x*this.bs, y*this.bs, this.bs+3, 4);
+				if (this.hArray[y][x]) { 
+					context.fillRect(y*this.bs, x*this.bs, this.bs+3, 4);
 				}
 			}
 		}
