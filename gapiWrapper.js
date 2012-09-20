@@ -251,7 +251,7 @@ function positionVideoCanvas() {
 		else {
 			VC.setWidth(maxWidth);
 		}
-		VC.setPosition(580,0);
+		VC.setPosition(530,0);
 		VC.setVisible(true);
 	}
 	else {
