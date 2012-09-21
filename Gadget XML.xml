@@ -29,7 +29,7 @@
         
     <div id="0team"> 
             <li class='teamName' >
-                <nobr id='0Name'>Team0<nobr>
+                <nobr id='0Name'>Team 0<nobr>
                 <nobr  id=''></nobr>
             </li>
             <li id='0Players'></li> 
@@ -38,7 +38,7 @@
 
     <div id="1team"> 
             <li class='teamName' >
-                <nobr id='1Name'>Team1<nobr>
+                <nobr id='1Name'>Team 1<nobr>
                 <nobr  id=''></nobr>
             </li>
             <li id='1Players'></li> 
@@ -47,7 +47,7 @@
 
     <div id="2team"> 
             <li class='teamName' >
-                <nobr id='2Name'>Team2<nobr>
+                <nobr id='2Name'>Team 2<nobr>
                 <nobr  id=''></nobr>
             </li>
             <li id='2Players'></li> 

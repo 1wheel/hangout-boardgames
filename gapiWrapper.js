@@ -43,7 +43,7 @@ function gameSetup(name){
 	gameName = name;
 	eval("Game = new " + gameName +"();");	
 	for (var i = 0; i < Game.teamArray.length; i++){
-		document.getElementById(i + Name).innerHTML = Game.teamArray[i];
+		document.getElementById(i + "Name").innerHTML = Game.teamArray[i];
 	}
 
 }
