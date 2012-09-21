@@ -113,6 +113,7 @@ gapi.hangout.onApiReady.add(function(eventObj){
 				gapi.hangout.data.submitDelta({
 					infoDisplay:	startGameHTML
 				});	
+				document.getElementById("info").innerHTML = infoDisplay;
 			}
 				
 			//checks to see if there are other players present

@@ -7,7 +7,7 @@ function Dots() {
 	this.boxArray = [];	//array of filled boxes
 	this.blueTurn;
 
-	teamArray = ["Neutral", "Red", "Blue"];
+	this.teamArray = ["Neutral", "Red", "Blue"];
 
 	//sends the starting game layout to wrapper
 	this.callSendState = function(){
