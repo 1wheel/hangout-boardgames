@@ -211,7 +211,7 @@ function findTeamMembers(team) {
 
 function addButton(bTeam, pTeam){
 	//true if player is currently on team - no join Button displayed
-	if (btTeam == team ) {
+	if (bTeam == team ) {
 		document.getElementById(bTeam + "Join").innerHTML = "";
 	}
 	//displays join button
