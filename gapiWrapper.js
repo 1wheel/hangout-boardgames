@@ -32,12 +32,20 @@ function startNewGameClick(){
 	console.log("starting new game");	
 	setupCanvasObjects();
 
-	gameName = gameList[document.getElementById("gameMenu").selectedIndex];
-	eval("Game = new " + gameName +"();");	
+	gameSetup(gameList[document.getElementById("gameMenu").selectedIndex]);
 	
 	gameStartInfo();
 
 	Game.startGame();
+}
+
+function gameSetup(name){
+	gameName = name;
+	eval("Game = new " + gameName +"();");	
+	for (var i = 0; i < Game.teamArray.length){
+		document.getElementById(i + Name).innerHTML = Game.teamArray[i];
+	}
+
 }
 
 //called by game object when it has data to send out
@@ -61,7 +69,7 @@ function sendClickToGame(e) {
 }
 
 function isPlayerTurn(color) {
-	return participantTeam[idIndex(gapi.hangout.getParticipantId())] == color
+	return participantTeam[idIndex(gapi.hangout.getParticipantId())] == color;
 }
 
 //updates info div with winner info and button to start new game
@@ -92,9 +100,8 @@ gapi.hangout.onApiReady.add(function(eventObj){
 			if (state.gameName) {
 				setupCanvasObjects();
 
-				gameName = state.gameName;
+				gameSetup(state.gameName);
 				console.log("joining running game of " + gameName);
-				eval("Game = new " + gameName +"();");
 
 				//Simulate server update to trigger redraw		
 				sendStateToGame(state.boardString);
@@ -168,10 +175,9 @@ function serverUpdate(){
 		document.getElementById("info").innerHTML = infoDisplay;
 
 		if (gameName != state.gameName) {
-			eval("Game = new " + state.gameName +"();");
-			gameName = state.gameName;
+			gameSetup(state.gameName);
 		}
-		else if (context) {
+		if (context) {
 			sendStateToGame(state.boardString);
 		}
 	}
@@ -184,17 +190,12 @@ function serverUpdate(){
 //updates list of particpants and the presence of switch team buttons
 function participantUpdate(){
 	//team of the local user
-	var team = participantTeam[idIndex(gapi.hangout.getParticipantId())];
+	var pTeam = participantTeam[idIndex(gapi.hangout.getParticipantId())];
 	
-	//adds buttons
-	addButton('joinBlack',team);
-	addButton('joinNone',team);
-	addButton('joinWhite',team);
-	
-	document.getElementById('blackPlayers').innerHTML = findTeamMembers(1);
-	document.getElementById('nonePlayers').innerHTML = findTeamMembers(0);
-	document.getElementById('whitePlayers').innerHTML = findTeamMembers(-1);
-	
+	for (var i = 0; i < Game.teamArray.length; i++){
+		addButton(i,pTeam);
+		document.getElementById(i + 'Players').innerHTML = findTeamMembers(0);
+	}
 }
 
 function findTeamMembers(team) {
@@ -207,27 +208,14 @@ function findTeamMembers(team) {
 	return rv;
 }
 
-function addButton(bName, team){
+function addButton(bTeam, pTeam){
 	//true if player is currently on team - no join Button displayed
-	if (buttonNameToTeam(bName) == team ) {
-		document.getElementById(bName).innerHTML = "";
+	if (btTeam == team ) {
+		document.getElementById(bTeam + "Join").innerHTML = "";
 	}
 	//displays join button
 	else {
-		document.getElementById(bName).innerHTML = "<input type='button' value='Join' onclick='changeTeam(" + buttonNameToTeam(bName) + ");' />";		
-	}
-}
-
-//takes a button name and returns a team number
-function buttonNameToTeam(bName) {
-	if (bName == 'joinBlack') {
-		return 1;
-	}
-	else if (bName == 'joinNone') {
-		return 0;
-	}
-	else if (bName == 'joinWhite') {
-		return -1;
+		document.getElementById(bTeam + "Join").innerHTML = "<input type='button' value='Join' onclick='changeTeam(" + bTeam + ");' />";		
 	}
 }
 
@@ -276,6 +264,7 @@ function positionVideoCanvas() {
 	else {
 		VC = gapi.hangout.layout.getVideoCanvas();
 	}
+	window.onresize = positionVideoCanvas;
 }
 
 //creates info on game start

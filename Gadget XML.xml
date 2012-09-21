@@ -27,26 +27,34 @@
     <script type ="text/javascript">  </script>
 
         
-    <div id="white"> 
-            <li class='teamName' >White1 <nobr  id='whiteScore'></nobr> </li>
-            <li id='whitePlayers'>whitePlayers</li> 
-            <li id='joinWhite'></li>
-       
+    <div id="0team"> 
+            <li class='teamName' >
+                <nobr id='0Name'>Team0<nobr>
+                <nobr  id=''></nobr>
+            </li>
+            <li id='0Players'></li> 
+            <li id='0Join'></li>
+   </div>
+
+    <div id="1team"> 
+            <li class='teamName' >
+                <nobr id='1Name'>Team1<nobr>
+                <nobr  id=''></nobr>
+            </li>
+            <li id='1Players'></li> 
+            <li id='1Join'></li>
+   </div>
+
+    <div id="2team"> 
+            <li class='teamName' >
+                <nobr id='2Name'>Team2<nobr>
+                <nobr  id=''></nobr>
+            </li>
+            <li id='2Players'></li> 
+            <li id='2Join'></li>
    </div>
             
-    <div id="none"> 
-            <li class='teamName' id='updateField'>Unassigned</li>
-            <li id='nonePlayers'>nonePlayers</li>            
-            <li id='joinNone'></li>
 
-    </div>  
-            
-    <div id="black"> 
-            <li class='teamName' >Black <nobr  id='blackScore'></nobr> </li>
-            <li id='blackPlayers'>blackPlayers</li>            
-            <li id='joinBlack'></li>
-        
-    </div>
 
 </body>​
 </html>
