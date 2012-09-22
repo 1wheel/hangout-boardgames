@@ -7,11 +7,22 @@ var container;		//holds color score, player names and join button
 
 var gameList = ["Dots", "Reversi", "Four in a Row"];
 var gameFunctionList = ["dots", "reversi", "fourInARow"];
-var dropDownMenu = "";
-for (var i = 0; i < gameList.length; i++){
-	dropDownMenu += '<option value="' + gameList[i] + '">' + gameList[i] +'</option>';
+var dropDownMenu;
+var lastSelection = 0;
+createDropDownMenu(lastSelection);
+function createDropDownMenu(selectedID){
+	dropDownMenu = "";
+	for (var i = 0; i < gameList.length; i++){
+		if (i == selectedID) {
+			dropDownMenu += '<option selected = "selected" value="' + gameList[i] + '">' + gameList[i] +'</option>';
+		}
+		else{
+		dropDownMenu += '<option value="' + gameList[i] + '">' + gameList[i] +'</option>';
+		}
+	}
+	dropDownMenu = '<select  id="gameMenu">' + dropDownMenu + '</select>';
 }
-dropDownMenu = '<select  id="gameMenu">' + dropDownMenu + '</select>';
+
 
 var startGameButton = "<input type='button' value='Play' onclick='startNewGameClick();' />";
 var startGameHTML = startGameButton + " a game of " + dropDownMenu;
@@ -29,6 +40,7 @@ function updateInfoDisplay() {
 
 function startNewGameClick(){
 	var selectedGame = gameFunctionList[document.getElementById("gameMenu").selectedIndex];
+	lastSelection = document.getElementById("gameMenu").selectedIndex;
 	eval("Game = new " + selectedGame +"();");
 	setupCanvasObjects();
 	Game.startGame();
@@ -55,6 +67,7 @@ function isPlayerTurn(color) {
 
 //updates info div with winner info and button to start new game
 function gameEnded(winnerText){
+	createDropDownMenu(lastSelection);
 	infoDisplay = winnerText + startGameButton + " a new game of " + dropDownMenu;
 	document.getElementById("info").innerHTML = infoDisplay; 
 }
@@ -68,6 +81,3 @@ function setupCanvasObjects() {
 	board.addEventListener("mousedown",sendClickToGame,false);
 }
 
-setupCanvasObjects();
-eval("Game = new " + "fourInARow" +"();");
-Game.startGame();
