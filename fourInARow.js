@@ -121,6 +121,7 @@ function fourInARow(){
 				if (isPlayerTurn(color) && !this.gameOver) {
 
 					this.cArray[x][y] = color;
+					this.drawBoard();
 					this.blackTurn = !this.blackTurn;
 					
 					//uploads newboard state

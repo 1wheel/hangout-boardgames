@@ -177,8 +177,7 @@ function Reversi(){
 						this.cArray[flippedChips[i].x][flippedChips[i].y] = color;
 					}
 					this.cArray[cord.x][cord.y] = color;
-					csave = this.cArray;
-					console.log("saved c");
+					this.drawBoard();
 					this.blackTurn = !this.blackTurn;
 					
 					//uploads newboard state
