@@ -95,10 +95,10 @@ function FourInARow(){
 		//creates Winner text
 		var winnerText;
 		if (this.blackTurn){
-			winnerText = "Red Wins! "
+			winnerText = "Yellow Wins! "
 		}
 		else{
-			winnerText = "Yellow Wins! "
+			winnerText = "Red Wins! "
 		}
 
 		console.log(winnerText);

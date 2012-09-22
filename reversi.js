@@ -177,7 +177,6 @@ function Reversi(){
 						this.cArray[flippedChips[i].x][flippedChips[i].y] = color;
 					}
 					this.cArray[cord.x][cord.y] = color;
-					this.drawBoard();
 					this.blackTurn = !this.blackTurn;
 					
 					//uploads newboard state
@@ -192,6 +191,9 @@ function Reversi(){
 							}
 						}
 					}
+
+					this.drawBoard();
+
 					//game ended
 					if (vEmpty){
 						this.endGame();
