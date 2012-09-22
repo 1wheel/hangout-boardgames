@@ -12,6 +12,7 @@ function Reversi(){
 	}
 
 	this.blackTurn;
+	this.teamArray["Neutral", "Black", "White"];
 
 	//sends the starting game layout to wrapper
 	this.callSendState = function(){
@@ -45,8 +46,8 @@ function Reversi(){
 		}
 		
 		//places starting pieces
-		this.cArray[3][3] = -1;
-		this.cArray[4][4] = -1;
+		this.cArray[3][3] = 2;
+		this.cArray[4][4] = 2;
 		this.cArray[3][4] = 1;
 		this.cArray[4][3] = 1;
 		
@@ -129,7 +130,7 @@ function Reversi(){
 	 this.endGame = function(){
 		//creates Winner text
 		var winnerText;
-		var scoreDif = this.findScore(1)-this.findScore(-1);
+		var scoreDif = this.findScore(1)-this.findScore(2);
 		if (scoreDif>0){
 			winnerText = "Black Wins! "
 		}
@@ -259,7 +260,7 @@ function Reversi(){
 	this.findFlipLength = function(x,y,dx,dy,color){	
 		var rv = [];
 		var i = 1;
-		while (this.onBoard(x+i*dx,y+i*dy) && this.cArray[x+dx*i][y+dy*i] == -1*color) {
+		while (this.onBoard(x+i*dx,y+i*dy) && this.cArray[x+dx*i][y+dy*i] == this.flipColor(color) ) {
 			i++;	
 		}
 		
@@ -275,6 +276,10 @@ function Reversi(){
 		return rv;
 	}
 
+	this.flipColor = function (color){
+		return (color - 1) + (color - 2)*-2;
+	}
+
 	//returns true if the cord is on the board
 	this.onBoard = function(x, y) {
 		return (0 <= x && x <= 7 && 0 <= y && y <= 7);
@@ -287,7 +292,7 @@ function Reversi(){
 			color = 1;
 		}
 		else {
-			color = -1 ;
+			color = 2;
 		}
 		return color;
 	}

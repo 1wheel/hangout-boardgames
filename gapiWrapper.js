@@ -195,7 +195,7 @@ function participantUpdate(){
 	
 	for (var i = 0; i < Game.teamArray.length; i++){
 		addButton(i,pTeam);
-		document.getElementById(i + 'Players').innerHTML = findTeamMembers(0);
+		document.getElementById(i + 'Players').innerHTML = findTeamMembers(i);
 	}
 }
 
