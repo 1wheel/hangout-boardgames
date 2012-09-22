@@ -1,4 +1,4 @@
-function fourInARow(){
+function FourInARow(){
 	this.bnx = 7;						//number of boxs
 	this.bny = 6;
 	this.bs = Math.min(width,height) /7; //boxsize

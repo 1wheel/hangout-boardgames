@@ -7,7 +7,7 @@ var container;		//holds color score, player names and join button
 
 //displays above game canvas
 var gameList = ["Dots", "Reversi", "Four in a Row"];
-var gameFunctionList = ["dots", "reversi", "fourInARow"];
+var gameFunctionList = ["Dots", "Reversi", "FourInARow"];
 var dropDownMenu;
 
 var lastSelection = 0;
