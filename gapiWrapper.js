@@ -193,7 +193,8 @@ function participantUpdate(){
 	//team of the local user
 	var pTeam = participantTeam[idIndex(gapi.hangout.getParticipantId())];
 	
-	for (var i = 0; i < Game.teamArray.length; i++){
+	var teamArray = (Game.teamArray) ? Game.teamArray : ["Neutral", "Team One", "Team Two"];
+	for (var i = 0; i < teamArray.length; i++){
 		addButton(i,pTeam);
 		document.getElementById(i + 'Players').innerHTML = findTeamMembers(i);
 	}
