@@ -17,6 +17,8 @@
 	<script type="text/javascript" src="https://raw.github.com/1wheel/hangout-boardgames/master/gapiWrapper.js"></script>
     <script type="text/javascript" src="https://raw.github.com/1wheel/hangout-boardgames/master/reversi.js"></script>
     <script type="text/javascript" src="https://raw.github.com/1wheel/hangout-boardgames/master/dots.js"></script>
+    <script type="text/javascript" src="https://raw.github.com/1wheel/hangout-boardgames/master/fourInARow.js"></script>
+
 
 </head>
 

@@ -6,7 +6,8 @@ var context;		//canvas context
 var container;		//holds color score, player names and join button
 
 //displays above game canvas
-var gameList = ["Dots", "Reversi"];
+var gameList = ["Dots", "Reversi", "Four in a Row"];
+var gameFunctionList = ["dots", "reversi", "fourInARow"];
 var dropDownMenu = "";
 for (var i = 0; i < gameList.length; i++){
 	dropDownMenu += '<option value="' + gameList[i] + '">' + gameList[i] +'</option>';
@@ -32,7 +33,7 @@ function startNewGameClick(){
 	console.log("starting new game");	
 	setupCanvasObjects();
 
-	gameSetup(gameList[document.getElementById("gameMenu").selectedIndex]);
+	gameSetup(gameFunctionList[document.getElementById("gameMenu").selectedIndex]);
 	
 	gameStartInfo();
 
@@ -74,7 +75,7 @@ function isPlayerTurn(color) {
 
 //updates info div with winner info and button to start new game
 function gameEnded(winnerText){
-	infoDisplay = winnerText + " . " + startGameHTML;
+	infoDisplay = winnerText + startGameButton + " a new game of " + dropDownMenu;
 	gapi.hangout.data.submitDelta({
 		infoDisplay:	infoDisplay
 	});	

@@ -104,10 +104,10 @@ function Reversi(){
 		for (var x = 0; x < this.bn; x++) {
 			for (var y = 0; y < this.bn; y++) {
 				if (this.cArray[x][y] != 0) {
-					this.drawPiece(x,y,this.cArray[x][y],8);
+					this.drawPiece(x,y,this.cArray[x][y],this.bs/2.5);
 				}
 				else if (this.vArray[x][y] != 0) {
-					this.drawPiece(x,y,this.vArray[x][y],30);
+					this.drawPiece(x,y,this.vArray[x][y],this.bs/7);
 				}
 			}
 		}
@@ -123,7 +123,10 @@ function Reversi(){
 			context.fillStyle = "rgb(255,255,255)";
 		}
 		
-		context.fillRect(x*this.bs + size, y*this.bs + size, this.bs - size*2, this.bs - size*2);
+		context.beginPath();
+		context.arc((x+.5)*this.bs, (y+.5)*this.bs, size, 0, 2*Math.PI, false);
+		context.fill();
+		context.closePath();
 	}
 
 	//called when there are no valid moves. adds a button to start new game

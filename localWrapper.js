@@ -5,7 +5,8 @@ var board;			//canva
 var context;		//canvas context
 var container;		//holds color score, player names and join button
 
-var gameList = ["Dots", "Reversi"];
+var gameList = ["Dots", "Reversi", "Four in a Row"];
+var gameFunctionList = ["dots", "reversi", "fourInARow"];
 var dropDownMenu = "";
 for (var i = 0; i < gameList.length; i++){
 	dropDownMenu += '<option value="' + gameList[i] + '">' + gameList[i] +'</option>';
@@ -27,7 +28,7 @@ function updateInfoDisplay() {
 }
 
 function startNewGameClick(){
-	var selectedGame = gameList[document.getElementById("gameMenu").selectedIndex];
+	var selectedGame = gameFunctionList[document.getElementById("gameMenu").selectedIndex];
 	eval("Game = new " + selectedGame +"();");
 	setupCanvasObjects();
 	Game.startGame();
@@ -54,7 +55,7 @@ function isPlayerTurn(color) {
 
 //updates info div with winner info and button to start new game
 function gameEnded(winnerText){
-	infoDisplay = winnerText + 
+	infoDisplay = winnerText + startGameButton + " a new game of " + dropDownMenu;
 	document.getElementById("info").innerHTML = infoDisplay; 
 }
 
@@ -66,3 +67,7 @@ function setupCanvasObjects() {
 	//listens for clicks on the board	
 	board.addEventListener("mousedown",sendClickToGame,false);
 }
+
+setupCanvasObjects();
+eval("Game = new " + "fourInARow" +"();");
+Game.startGame();
