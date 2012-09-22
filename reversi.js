@@ -12,7 +12,7 @@ function Reversi(){
 	}
 
 	this.blackTurn;
-	this.teamArray["Neutral", "Black", "White"];
+	this.teamArray = ["Neutral", "Black", "White"];
 
 	//sends the starting game layout to wrapper
 	this.callSendState = function(){
