@@ -27,7 +27,7 @@
     <script type ="text/javascript">  </script>
 
         
-    <div id="0team"> 
+    <div id="Team0"> 
             <li class='teamName' >
                 <nobr id='0Name'>Team 0<nobr>
                 <nobr  id=''></nobr>
@@ -36,7 +36,7 @@
             <li id='0Join'></li>
    </div>
 
-    <div id="1team"> 
+    <div id="Team1"> 
             <li class='teamName' >
                 <nobr id='1Name'>Team 1<nobr>
                 <nobr  id=''></nobr>
@@ -45,7 +45,7 @@
             <li id='1Join'></li>
    </div>
 
-    <div id="2team"> 
+    <div id="Team2"> 
             <li class='teamName' >
                 <nobr id='2Name'>Team 2<nobr>
                 <nobr  id=''></nobr>

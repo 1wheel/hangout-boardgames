@@ -1,18 +1,18 @@
-#white{
+#Team2{
  position:absolute;
  top:430;
  left:10px;
  width:200px;
 }
 
-#none{
+#Team0{
  position:absolute;
  top:430px;
  left:180px;
  width:200px;
 }
 
-#black{
+#Team1{
  position:absolute;
  top:430px;
  left:300px;
