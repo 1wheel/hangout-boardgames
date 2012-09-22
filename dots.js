@@ -153,7 +153,7 @@ function Dots() {
 		var pos = this.findPos(board);
 		var cord = this.findCord(e.pageX - pos.x, e.pageY - pos.y);
 		if (cord) {
-			if (isPlayerTurn(blueTurn? 2 : 1))
+			if (isPlayerTurn(this.blueTurn? 2 : 1))
 			//if line is added to board, redraw lines
 			if (this.attemptMove(cord.vertical, cord.x, cord.y)) {
 				this.drawBoard();

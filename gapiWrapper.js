@@ -105,7 +105,6 @@ gapi.hangout.onApiReady.add(function(eventObj){
 
 				//Simulate server update to trigger redraw		
 				sendStateToGame(state.boardString);
-				participantUpdate();		
 				document.getElementById("info").innerHTML = state.infoDisplay;
 
 			}
@@ -114,7 +113,9 @@ gapi.hangout.onApiReady.add(function(eventObj){
 					infoDisplay:	startGameHTML
 				});	
 				document.getElementById("info").innerHTML = infoDisplay;
-			}
+			}				
+			participantUpdate();		
+
 				
 			//checks to see if there are other players present
 			if (state.participantID) {
