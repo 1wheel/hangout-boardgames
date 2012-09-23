@@ -107,7 +107,7 @@ function Reversi(){
 					this.drawPiece(x,y,this.cArray[x][y],this.bs/2.5);
 				}
 				else if (this.vArray[x][y] != 0) {
-					this.drawPiece(x,y,this.vArray[x][y],this.bs/7);
+					this.drawPiece(x,y,this.vArray[x][y],this.bs/10);
 				}
 			}
 		}
@@ -163,10 +163,10 @@ function Reversi(){
 
 	//called when the page is clicked
 	this.click = function(e){
-		var color = this.currentColor();
+		var color = (this.blackTurn) ? 1 : 2;
 		var pos = this.findPos(board);		
 		var cord = this.findCord(e.pageX - pos.x, e.pageY - pos.y);
-		cor = cord;
+
 		if (cord) {
 			//if click is on the board, see if it is valid move
 			if (this.vArray[cord.x][cord.y] != 0) {
@@ -227,7 +227,7 @@ function Reversi(){
 	//find valid moves
 	this.createValidMoveArray = function() {
 		//cycles through every board space, finding those with valid moves
-		var color = this.currentColor();
+		var color = (this.blackTurn) ? 1 : 2;;
 		for (var x = 0; x < this.bn; x++) {
 			for (var y = 0; y < this.bn; y++) {
 				this.vArray[x][y] = 0;
@@ -287,18 +287,6 @@ function Reversi(){
 	//returns true if the cord is on the board
 	this.onBoard = function(x, y) {
 		return (0 <= x && x <= 7 && 0 <= y && y <= 7);
-	}
-
-	//finds whose turn it is
-	this.currentColor = function(){
-		var color;
-		if (this.blackTurn) {
-			color = 1;
-		}
-		else {
-			color = 2;
-		}
-		return color;
 	}
 
 	//finds how much the canvas is offset in the frame

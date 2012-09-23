@@ -93,13 +93,7 @@ function FourInARow(){
 	 	this.gameOver = true;
 
 		//creates Winner text
-		var winnerText;
-		if (this.blackTurn){
-			winnerText = "Yellow Wins! "
-		}
-		else{
-			winnerText = "Red Wins! "
-		}
+		var winnerText = (this.blackTurn) ? "Yellow Wins!" : "Red Wins!";
 
 		console.log(winnerText);
 		gameEnded(winnerText);
@@ -107,7 +101,7 @@ function FourInARow(){
 
 	//called when the page is clicked
 	this.click = function(e){
-		var color = this.currentColor();
+		var color = (this.blackTurn) ? 1 : 2;
 		var pos = this.findPos(board);		
 		var cord = this.findCord(e.pageX - pos.x, e.pageY - pos.y);
 
@@ -201,25 +195,9 @@ function FourInARow(){
 		return RV;
 	}
 
-	this.flipColor = function (color){
-		return (color - 1) + (color - 2)*-2;
-	}
-
 	//returns true if the cord is on the board
 	this.onBoard = function(x, y) {
 		return (0 <= x && x < this.bnx && 0 <= y && y < this.bny);
-	}
-
-	//finds whose turn it is
-	this.currentColor = function(){
-		var color;
-		if (this.blackTurn) {
-			color = 1;
-		}
-		else {
-			color = 2;
-		}
-		return color;
 	}
 
 	//finds how much the canvas is offset in the frame
