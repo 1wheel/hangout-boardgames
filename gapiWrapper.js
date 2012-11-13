@@ -122,10 +122,10 @@ gapi.hangout.onApiReady.add(function(eventObj){
 
 			}
 			else {
-				gapi.hangout.data.submitDelta({
-					infoDisplay:	startGameHTML
-				});	
-				document.getElementById("info").innerHTML = infoDisplay;
+				// gapi.hangout.data.submitDelta({
+				// 	infoDisplay:	startGameHTML
+				// });	
+				// document.getElementById("info").innerHTML = infoDisplay;
 				console.log("auto starting game");
 				startNewGameClick();
 			}				
