@@ -143,6 +143,7 @@ gapi.hangout.onApiReady.add(function(eventObj){
 			}
 		
 			//adds the local player to team and saves id
+			//TODO: auto join the team with the least players
 			participantID[participantID.length] = gapi.hangout.getParticipantId();
 			participantTeam[participantTeam.length] = 1; 
 			
