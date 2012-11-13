@@ -136,7 +136,6 @@ gapi.hangout.onApiReady.add(function(eventObj){
 			}				
 			participantUpdate();		
 
-				
 			//checks to see if there are other players present
 			if (state.participantID) {
 				participantID = JSON.parse(state.participantID);
@@ -145,7 +144,7 @@ gapi.hangout.onApiReady.add(function(eventObj){
 		
 			//adds the local player to team and saves id
 			participantID[participantID.length] = gapi.hangout.getParticipantId();
-			participantTeam[participantTeam.length] = 0; 
+			participantTeam[participantTeam.length] = 1; 
 			
 			//rejoining creates a duplicate memembers - removes those
 			for(var i = 0; i <participantID.length; i++) {
