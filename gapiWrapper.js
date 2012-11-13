@@ -46,7 +46,7 @@ function startNewGameClick(){
 	console.log("canvas set up");
 	lastSelection = (document.getElementById("gameMenu")) ? document.getElementById("gameMenu").selectedIndex : 0;
 	console.log("last selection: " + lastSelection);
-	gameSetup(gameFunctionList[document.getElementById("gameMenu").selectedIndex]);
+	gameSetup(lastSelection);
 	console.log("game setup completed");
 	gameStartInfo();
 	console.log("gamestart info success");
