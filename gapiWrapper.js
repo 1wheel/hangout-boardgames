@@ -126,6 +126,8 @@ gapi.hangout.onApiReady.add(function(eventObj){
 					infoDisplay:	startGameHTML
 				});	
 				document.getElementById("info").innerHTML = infoDisplay;
+				console.log("auto starting game");
+				startNewGameClick();
 			}				
 			participantUpdate();		
 
