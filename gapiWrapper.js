@@ -6,8 +6,8 @@ var context;		//canvas context
 var container;		//holds color score, player names and join button
 
 //displays above game canvas
-var gameList = ["Dots", "Reversi", "Four in a Row"];
-var gameFunctionList = ["Dots", "Reversi", "FourInARow"];
+var gameList = ["Checkers", "Dots", "Reversi", "Four in a Row"];
+var gameFunctionList = ["Checkers", "Dots", "Reversi", "FourInARow"];
 var dropDownMenu;
 
 var lastSelection = 0;
