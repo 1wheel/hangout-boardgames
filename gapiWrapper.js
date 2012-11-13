@@ -43,12 +43,15 @@ var gameName;
 function startNewGameClick(){
 	console.log("starting new game");	
 	setupCanvasObjects();
-	lastSelection = document.getElementById("gameMenu").selectedIndex;
+	console.log("canvas set up");
+	lastSelection = (document.getElementById("gameMenu")) ? document.getElementById("gameMenu").selectedIndex : 0;
+	console.log("last selection: " + lastSelection);
 	gameSetup(gameFunctionList[document.getElementById("gameMenu").selectedIndex]);
-	
+	console.log("game setup completed");
 	gameStartInfo();
-
+	console.log("gamestart info success");
 	Game.startGame();
+	console.log("started game!");
 }
 
 function gameSetup(name){
@@ -95,11 +98,13 @@ function gameEnded(winnerText){
 
 //creates on context object and listener
 function setupCanvasObjects() {
+	console.log("canvas setup started");
 	board = document.getElementById("board");
 	context = board.getContext("2d"); 
 	container = document.getElementById("container");
 	//listens for clicks on the board	
 	board.addEventListener("mousedown",sendClickToGame,false);
+	console.log("canvas setup finished");
 }
 
 //game starts when hangout API is ready
