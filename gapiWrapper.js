@@ -101,7 +101,7 @@ function setupCanvasObjects() {
 	console.log("canvas setup started");
 	board = document.getElementById("board");
 	context = board.getContext("2d"); 
-	container = document.getElementById("container");
+	//container = document.getElementById("container");
 	//listens for clicks on the board	
 	board.addEventListener("mousedown",sendClickToGame,false);
 	console.log("canvas setup finished");
