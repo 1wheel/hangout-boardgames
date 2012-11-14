@@ -153,6 +153,7 @@ gapi.hangout.onApiReady.add(function(eventObj){
 					if (participantID[i] == participantID[j]) {
 						participantID.splice(j,j);
 						participantTeam.splice(j,j);
+						j = j - 1;
 					}
 				}
 			}
