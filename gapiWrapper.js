@@ -145,7 +145,7 @@ gapi.hangout.onApiReady.add(function(eventObj){
 			//adds the local player to team and saves id
 			//TODO: auto join the team with the least players
 			participantID[participantID.length] = gapi.hangout.getParticipantId();
-			participantTeam[participantTeam.length] = 1; 
+			participantTeam[participantTeam.length] = smallestTeam();
 			
 			//rejoining creates a duplicate memembers - removes those
 			for(var i = 0; i <participantID.length; i++) {
@@ -266,8 +266,17 @@ function idIndex(id) {
 	}
 	//passed id not in array, add entry
 	participantID[i] = id;
-	participantTeam[i] = 0;
+	participantTeam[i] = smallestTeam();
 	return i;
+}
+
+function smallestTeam(){
+	var teamSize = [9,0,0];
+	for(var i = 0; i < participantTeam.length; i++){
+		teamSize[participantTeam[i]] = teamSize[participantTeam[i]] + 1;
+	}
+	console.log(teamSize);
+	return teamSize[1] <= teamSize[2] ? 1 : 2;
 }
 
 //positions video canvas to take up largest possible area without covering board
