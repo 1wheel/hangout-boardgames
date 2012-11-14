@@ -22,6 +22,13 @@ function FourInARow(){
 		var boardState = 	JSON.parse(boardString);
 		this.cArray = 		JSON.parse(boardState.cArray);
 		this.blackTurn = 	JSON.parse(boardState.blackTurn);
+
+		for (var i = 0; i < bnx; i++){
+			for (var j = 0; j < bny; j++){
+				this.gameOver = (this.gameOver) ? this.gameOver : checkGameEnd(i,j);
+			}
+		}
+		
 		this.drawBoard();
 	}
 
