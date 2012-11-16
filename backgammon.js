@@ -412,7 +412,7 @@ function Backgammon(){
 
 	this.countRemainingPieces = function (color){
 		var rv = 0;
-		for (var i = 0; i < 25; i++){
+		for (var i = 0; i < 26; i++){
 			if (this.cArray[i].color == color){
 				rv = rv + this.cArray[i].num;
 			}
