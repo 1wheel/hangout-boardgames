@@ -80,11 +80,11 @@ function sendStateToGame(boardString){
 	Game.recieveState(boardString);
 	if (Game.whiteTurn){
 		document.getElementById('1Name').className = 'currentTurn';
-		document.getElementById('2Name').className.replace('currentTurn', '');
+		document.getElementById('2Name').className = "";
 	}
 	else{
 		document.getElementById('2Name').className = 'currentTurn';
-		document.getElementById('1Name').className.replace('currentTurn', '');
+		document.getElementById('1Name').className = "";
 	}
 }
 
