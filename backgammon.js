@@ -56,14 +56,14 @@ function Backgammon(){
 		for (var i = 0; i < 26; i++) {
 			this.cArray[i] = {color: 0, num: 0};
 		}
-		//this.cArray[1] = {color: 1, num: 2};
+		this.cArray[1] = {color: 1, num: 2};
 		this.cArray[6] = {color: 2, num: 5};
-		//this.cArray[8] = {color: 2, num: 3};		
-		//this.cArray[12] = {color: 1, num: 5};
-		//this.cArray[13] = {color: 2, num: 5};
-		//this.cArray[17] = {color: 1, num: 3};
+		this.cArray[8] = {color: 2, num: 3};		
+		this.cArray[12] = {color: 1, num: 5};
+		this.cArray[13] = {color: 2, num: 5};
+		this.cArray[17] = {color: 1, num: 3};
 		this.cArray[19] = {color: 1, num: 5};
-		//this.cArray[24] = {color: 2, num: 2};
+		this.cArray[24] = {color: 2, num: 2};
 
 		//sets starting player
 		this.whiteTurn = true;
