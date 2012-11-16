@@ -84,7 +84,7 @@ function sendStateToGame(boardString){
 	}
 	else{
 		document.getElementById('1Name').className += 'currentTurn';
-		document.getElementById('2Name').className.replace((/\bcurrentTurn\b/, '');
+		document.getElementById('2Name').className.replace('currentTurn', '');
 	}
 }
 
