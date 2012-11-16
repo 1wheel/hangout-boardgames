@@ -22,6 +22,14 @@
     <script type="text/javascript" src="https://raw.github.com/1wheel/hangout-boardgames/master/backgammon.js"></script>
 
 
+<img src="dice/1.png" id = "dice1" style="display:none;"/>
+<img src="dice/2.png" id = "dice2" style="display:none;"/>
+<img src="dice/3.png" id = "dice3" style="display:none;"/>
+<img src="dice/4.png" id = "dice4" style="display:none;"/>
+<img src="dice/5.png" id = "dice5" style="display:none;"/>
+<img src="dice/6.png" id = "dice6" style="display:none;"/>
+
+
 </head>
 
  <div id='info'></div>
