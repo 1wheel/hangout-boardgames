@@ -46,6 +46,7 @@ function startNewGameClick(){
 	//setupCanvasObjects();
 	//console.log("canvas set up");
 	lastSelection = (document.getElementById("gameMenu")) ? document.getElementById("gameMenu").selectedIndex : 0;
+	infoDisplay = startGameButton + " a new game of " + createDropDownMenu(lastSelection);
 	console.log("last selection: " + lastSelection);
 	gameSetup(gameFunctionList[lastSelection]);
 	console.log("game setup completed");
@@ -61,7 +62,6 @@ function gameSetup(name){
 	for (var i = 0; i < Game.teamArray.length; i++){
 		document.getElementById(i + "Name").innerHTML = Game.teamArray[i];
 	}
-
 }
 
 //called by game object when it has data to send out
