@@ -5,8 +5,8 @@ var board;			//canva
 var context;		//canvas context
 var container;		//holds color score, player names and join button
 
-var gameList = ["Checkers", "Dots", "Reversi", "Four in a Row"];
-var gameFunctionList = ["Checkers", "Dots", "Reversi", "FourInARow"];
+var gameList = ["Backgammon", "Checkers", "Dots", "Reversi", "Four in a Row"];
+var gameFunctionList = ["Backgammon", "Checkers", "Dots", "Reversi", "FourInARow"];
 var dropDownMenu;
 var lastSelection = 0;
 createDropDownMenu(lastSelection);

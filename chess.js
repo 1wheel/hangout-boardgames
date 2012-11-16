@@ -5,8 +5,6 @@ function Checkers(){
 	this.cArray = [];					//chipArray
 	this.vArray = [];					//array of valid moves
 	this.kArray = [];					//array of kings
-
-	this.gameOver;
 	for (var x = 0; x < this.bn; x++) {
 		this.vArray[x] = [];
 		this.kArray[x] = [];
@@ -26,7 +24,6 @@ function Checkers(){
 			var boardState = {
 				cArray:			JSON.stringify(this.cArray), 
 				blackTurn:		JSON.stringify(this.blackTurn),
-				gameOver: 		JSON.stringify(this.gameOver)
 			}
 		sendStateToServer(JSON.stringify(boardState));
 	}
@@ -35,7 +32,6 @@ function Checkers(){
 		var boardState = 	JSON.parse(boardString);
 		this.cArray = 		JSON.parse(boardState.cArray);
 		this.blackTurn = 	JSON.parse(boardState.blackTurn);
-		this.gameOver = 	JSON.parse(boardState.gameOver);
 		this.drawBoard();
 	}
 
@@ -56,8 +52,6 @@ function Checkers(){
 		
 		//sets starting player
 		this.blackTurn = true;
-
-		this.gameOver = false;
 		
 		this.callSendState();	
 	}
@@ -157,9 +151,10 @@ function Checkers(){
 
 	//called when there are no valid moves. adds a button to start new game
 	 this.endGame = function(){
-	 	this.gameOver = true;
+		//creates Winner text
 		//creates Winner text
 		var winnerText = (this.blackTurn) ? "Red Wins!" : "Black Wins!";
+
 		console.log(winnerText);
 		gameEnded(winnerText);
 	}
@@ -171,7 +166,7 @@ function Checkers(){
 		var pos = this.findPos(board);		
 		var cord = this.findCord(e.pageX - pos.x, e.pageY - pos.y);
 
-		if (cord && !this.gameOver) {
+		if (cord) {
 			//if click is on the board, see if it is valid move
 			if (this.vArray[cord.x][cord.y] != 0) {
 				//checks to see if it is the local player's turn

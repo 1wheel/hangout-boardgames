@@ -1,19 +1,20 @@
 function FourInARow(){
 	this.bnx = 7;						//number of boxs
-	this.bny = 6;
-	this.bs = Math.min(width,height) /7; //boxsize
+	this.bny = 7;
+	this.bs = Math.min(width,height)/7; //boxsize
 
 	this.cArray = [];					//chipArray
 
 	this.blackTurn;
 	this.teamArray = ["Neutral", "Red", "Yellow"];
-	this.gameOver = false;
+	this.gameOver;
 
 	//sends the starting game layout to wrapper
 	this.callSendState = function(){
 			var boardState = {
 				cArray:			JSON.stringify(this.cArray), 
 				blackTurn:		JSON.stringify(this.blackTurn),
+				gameOver: 		JSON.stringify(this.gameOver)
 			}
 		sendStateToServer(JSON.stringify(boardState));
 	}
@@ -22,16 +23,10 @@ function FourInARow(){
 		var boardState = 	JSON.parse(boardString);
 		this.cArray = 		JSON.parse(boardState.cArray);
 		this.blackTurn = 	JSON.parse(boardState.blackTurn);
+		this.gameOver = 	JSON.parse(boardState.gameOver);
 
-		for (var i = 0; i < bnx; i++){
-			for (var j = 0; j < bny; j++){
-				this.gameOver = (this.gameOver) ? this.gameOver : checkGameEnd(i,j);
-			}
-		}
-		
 		this.drawBoard();
 	}
-
 
 	//initilizes empty arrays representing game state
 	this.startGame = function() {		
@@ -47,7 +42,7 @@ function FourInARow(){
 		
 		//sets starting player
 		this.blackTurn = true;
-		
+		this.gameOver = false;
 
 		this.callSendState();	
 	}
@@ -112,8 +107,7 @@ function FourInARow(){
 		var pos = this.findPos(board);		
 		var cord = this.findCord(e.pageX - pos.x, e.pageY - pos.y);
 
-		if (cord) {
-
+		if (cord && !this.gameOver) {
 			var x = cord.x;
 			var y = this.maxY(cord.x);
 			//if click is on the board, see if it is valid move
@@ -138,7 +132,7 @@ function FourInARow(){
 
 	//returns position of lowest empty slot in column x
 	this.maxY = function(x){
-		var rv = 5;
+		var rv = 6;
 		while (rv >= 0 && this.cArray[x][rv] != 0){
 			rv--;
 		}

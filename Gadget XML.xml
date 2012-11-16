@@ -19,6 +19,7 @@
     <script type="text/javascript" src="https://raw.github.com/1wheel/hangout-boardgames/master/dots.js"></script>
     <script type="text/javascript" src="https://raw.github.com/1wheel/hangout-boardgames/master/checkers.js"></script>
     <script type="text/javascript" src="https://raw.github.com/1wheel/hangout-boardgames/master/fourInARow.js"></script>
+    <script type="text/javascript" src="https://raw.github.com/1wheel/hangout-boardgames/master/backgammon.js"></script>
 
 
 </head>
