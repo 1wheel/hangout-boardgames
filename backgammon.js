@@ -30,7 +30,8 @@ function Backgammon(){
 			var boardState = {
 				cArray:			JSON.stringify(this.cArray), 
 				whiteTurn:		JSON.stringify(this.whiteTurn),
-				gameOver: 		JSON.stringify(this.gameOver)
+				gameOver: 		JSON.stringify(this.gameOver),
+				dice:  			JSON.stringify(this.dice)
 			}
 		sendStateToServer(JSON.stringify(boardState));
 		console.log("state sent");
@@ -42,7 +43,8 @@ function Backgammon(){
 		this.cArray = 		JSON.parse(boardState.cArray);
 		this.whiteTurn = 	JSON.parse(boardState.whiteTurn);
 		this.gameOver = 	JSON.parse(boardState.gameOver);
-	
+		this.dice = 		JSON.parse(boardState.dice);
+
 		this.findValidMoves();
 		
 		this.drawBoard();
@@ -410,7 +412,7 @@ function Backgammon(){
 
 	this.countRemainingPieces = function (color){
 		var rv = 0;
-		for (var i = 1; i < 25; i++){
+		for (var i = 0; i < 25; i++){
 			if (this.cArray[i].color == color){
 				rv = rv + this.cArray[i].num;
 			}

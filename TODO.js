@@ -30,6 +30,7 @@ Backgammon
 	//check to make sure other player has valid moves before switching 
 
 	piece spawned off screen??? cant dupilicate
+	
 	//dont show dot below if no active moves.
 
 	//end turn logic
@@ -41,10 +42,31 @@ Backgammon
 
 	//draw lines for removed pieces
 
+	//sync dice state
+	//check bar before drawing off board pieces (array up by one) 
+	//check bar for end game state
+
+	julia could move like 5 times?
+
 Connect 4
-	change to 7x7 (having a square will make GAPI look nicer - no white bar at the bottom of the screen)
+	//change to 7x7 (having a square will make GAPI look nicer - no white bar at the bottom of the screen)
 for all games
-	loser can take a move after game ends - need to fix my making this.gameOver shared between all players
+	//loser can take a move after game ends - need to fix my making this.gameOver shared between all players
+
+
+All games:
+	backgammon selection not remembered in game picker
+	flash on turn change
+	beep when it is your turn
+	remove join buttons
+
+mancala
+	make
+
+chess
+	make
+checkers
+	//king needs be sync'd
 
 white house petition signitures by location
 http://www.reddit.com/r/dataisbeautiful/comments/13853n/texas_secession_petition/

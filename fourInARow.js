@@ -5,7 +5,7 @@ function FourInARow(){
 
 	this.cArray = [];					//chipArray
 
-	this.blackTurn;
+	this.whiteTurn;
 	this.teamArray = ["Neutral", "Red", "Yellow"];
 	this.gameOver;
 
@@ -13,7 +13,7 @@ function FourInARow(){
 	this.callSendState = function(){
 			var boardState = {
 				cArray:			JSON.stringify(this.cArray), 
-				blackTurn:		JSON.stringify(this.blackTurn),
+				blackTurn:		JSON.stringify(this.whiteTurn),
 				gameOver: 		JSON.stringify(this.gameOver)
 			}
 		sendStateToServer(JSON.stringify(boardState));
@@ -22,7 +22,7 @@ function FourInARow(){
 	this.recieveState = function (boardString) {
 		var boardState = 	JSON.parse(boardString);
 		this.cArray = 		JSON.parse(boardState.cArray);
-		this.blackTurn = 	JSON.parse(boardState.blackTurn);
+		this.whiteTurn = 	JSON.parse(boardState.blackTurn);
 		this.gameOver = 	JSON.parse(boardState.gameOver);
 
 		this.drawBoard();
@@ -41,7 +41,7 @@ function FourInARow(){
 		}
 		
 		//sets starting player
-		this.blackTurn = true;
+		this.whiteTurn = true;
 		this.gameOver = false;
 
 		this.callSendState();	
@@ -95,7 +95,7 @@ function FourInARow(){
 	 	this.gameOver = true;
 
 		//creates Winner text
-		var winnerText = (this.blackTurn) ? "Yellow Wins!" : "Red Wins!";
+		var winnerText = (this.whiteTurn) ? "Yellow Wins!" : "Red Wins!";
 
 		console.log(winnerText);
 		gameEnded(winnerText);
@@ -103,7 +103,7 @@ function FourInARow(){
 
 	//called when the page is clicked
 	this.click = function(e){
-		var color = (this.blackTurn) ? 1 : 2;
+		var color = (this.whiteTurn) ? 1 : 2;
 		var pos = this.findPos(board);		
 		var cord = this.findCord(e.pageX - pos.x, e.pageY - pos.y);
 
@@ -117,7 +117,7 @@ function FourInARow(){
 
 					this.cArray[x][y] = color;
 					this.drawBoard();
-					this.blackTurn = !this.blackTurn;
+					this.whiteTurn = !this.whiteTurn;
 					
 					//uploads newboard state
 					this.callSendState();

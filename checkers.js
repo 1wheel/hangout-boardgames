@@ -16,7 +16,7 @@ function Checkers(){
 		}
 	}
 
-	this.blackTurn;
+	this.whiteTurn;
 	this.teamArray = ["Neutral", "Black", "Red"];
 
 	this.pieceClicked = false;
@@ -25,8 +25,9 @@ function Checkers(){
 	this.callSendState = function(){
 			var boardState = {
 				cArray:			JSON.stringify(this.cArray), 
-				blackTurn:		JSON.stringify(this.blackTurn),
-				gameOver: 		JSON.stringify(this.gameOver)
+				blackTurn:		JSON.stringify(this.whiteTurn),
+				gameOver: 		JSON.stringify(this.gameOver),
+				kArray: 		JSON.stringify(this.kArray)
 			}
 		sendStateToServer(JSON.stringify(boardState));
 	}
@@ -34,8 +35,9 @@ function Checkers(){
 	this.recieveState = function (boardString) {
 		var boardState = 	JSON.parse(boardString);
 		this.cArray = 		JSON.parse(boardState.cArray);
-		this.blackTurn = 	JSON.parse(boardState.blackTurn);
+		this.whiteTurn = 	JSON.parse(boardState.blackTurn);
 		this.gameOver = 	JSON.parse(boardState.gameOver);
+		this.kArray = 		JSON.parse(boardState.kArray);
 		this.drawBoard();
 	}
 
@@ -55,7 +57,7 @@ function Checkers(){
 		this.cArray[7] = [2,0,2,0,0,0,1,0];
 		
 		//sets starting player
-		this.blackTurn = true;
+		this.whiteTurn = true;
 
 		this.gameOver = false;
 		
@@ -159,7 +161,7 @@ function Checkers(){
 	 this.endGame = function(){
 	 	this.gameOver = true;
 		//creates Winner text
-		var winnerText = (this.blackTurn) ? "Red Wins!" : "Black Wins!";
+		var winnerText = (this.whiteTurn) ? "Red Wins!" : "Black Wins!";
 		console.log(winnerText);
 		gameEnded(winnerText);
 	}
@@ -167,7 +169,7 @@ function Checkers(){
 
 	//called when the page is clicked
 	this.click = function(e){
-		var color = (this.blackTurn) ? 1 : 2;
+		var color = (this.whiteTurn) ? 1 : 2;
 		var pos = this.findPos(board);		
 		var cord = this.findCord(e.pageX - pos.x, e.pageY - pos.y);
 
@@ -216,7 +218,7 @@ function Checkers(){
 	//find valid moves
 	this.createValidMoveArray = function() {
 		//cycles through every board space, finding those with valid moves
-		var color = (this.blackTurn) ? 1 : 2;
+		var color = (this.whiteTurn) ? 1 : 2;
 		var possibleJump = false;
 		for (var x = 0; x < this.bn; x++) {
 			for (var y = 0; y < this.bn; y++) {
@@ -326,13 +328,13 @@ function Checkers(){
 				this.pieceClicked = {x:xm,y:ym};
 			}
 		}
-		if ((this.blackTurn && ym == 0) || (!this.blackTurn && ym == 7)) {
+		if ((this.whiteTurn && ym == 0) || (!this.whiteTurn && ym == 7)) {
 			this.kArray[xm][ym] = 1;
 		}
 
 		if (!this.jumpRequired){
 			console.log("no jump chain : switching players");
-			this.blackTurn = !this.blackTurn;
+			this.whiteTurn = !this.whiteTurn;
 			this.jumpRequired = false;
 			this.createValidMoveArray();
 			this.pieceClicked = false;

@@ -13,6 +13,7 @@ var dropDownMenu;
 var lastSelection = 0;
 createDropDownMenu(lastSelection);
 function createDropDownMenu(selectedID){
+	console.log("creating drop down menu with " + selectedID);
 	dropDownMenu = "";
 	for (var i = 0; i < gameList.length; i++){
 		if (i == selectedID) {
@@ -77,6 +78,14 @@ function sendStateToServer(boardString){
 //passes updated state to gameboard
 function sendStateToGame(boardString){
 	Game.recieveState(boardString);
+	if (Game.whiteTurn){
+		document.getElementById('1Name').className += 'currentTurn';
+		document.getElementById('2Name').className.replace((/\bcurrentTurn\b/, '');
+	}
+	else{
+		document.getElementById('1Name').className += 'currentTurn';
+		document.getElementById('2Name').className.replace((/\bcurrentTurn\b/, '');
+	}
 }
 
 function sendClickToGame(e) {
