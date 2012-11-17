@@ -82,3 +82,9 @@ function setupCanvasObjects() {
 }
 
 startNewGameClick();
+
+document.getElementById("testText").addEventListener("mouseup",callalert,false);
+
+function callalert(){
+	alert("CALLLED");
+}

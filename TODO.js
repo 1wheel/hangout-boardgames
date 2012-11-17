@@ -55,10 +55,15 @@ for all games
 
 
 All games:
-	backgammon selection not remembered in game picker
-	flash on turn change
+	//backgammon selection not remembered in game picker
+	//flash on turn change
+
 	beep when it is your turn
-	remove join buttons
+		need to make clicking noise
+
+	remove join buttons - make team name clickable
+
+	unexplained init error with adam.r.pearce@gmail.com
 
 mancala
 	make
