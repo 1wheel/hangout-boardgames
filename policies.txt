@@ -2,7 +2,7 @@ Contact
 adam.r.pearce@gmail.com
 
 Privacy Policy
-This application does not log any personal information. Once the participants load the game files, no communication takes place between your computer and my server. 
+This application does not log any personal information. Once the participants load the game files, no communication takes place between your computer and my server. In the future, there may be an option to save games to play later which would involve saving player's user names and game state.
 
 Terms of Service
 This is a small project that I'm working - it is exceedingly unlikely that it will hurt your computer or be taken down. However, if either of those things happen you aren't allowed to sue me.

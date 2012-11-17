@@ -24,6 +24,7 @@ function createDropDownMenu(selectedID){
 		}
 	}
 	dropDownMenu = '<select  id="gameMenu">' + dropDownMenu + '</select>';
+	return dropDownMenu;
 }
 
 var startGameButton = "<input type='button' value='Play' onclick='startNewGameClick();' />";
