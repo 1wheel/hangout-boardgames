@@ -403,6 +403,10 @@ function Backgammon(){
 		for (var i = 0; i < this.validMoves.length; i++){
 			openMove = openMove || this.validMoves[i];
 		}
+		if (this.triSelected !== false){
+			this.drawMoves()
+			openMove = (this.validDrops[0] != -1 || this.validDrops[1] != -1)
+		}
 		return !openMove;
 	}
 
